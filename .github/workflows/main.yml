@@ -13,12 +13,68 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'  # Specify the Python version you want to use
+      - name: Create directory structure
+        run: |
+          mkdir -p telegram_sandbox_bot/bot/core/utils
+          mkdir -p telegram_sandbox_bot/bot/modules/general_commands/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/minigames/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/minigames/logic
+          mkdir -p telegram_sandbox_bot/bot/modules/rpg_elements/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/rpg_elements/logic
+          mkdir -p telegram_sandbox_bot/bot/modules/rpg_elements/data
+          mkdir -p telegram_sandbox_bot/bot/modules/pubg_telegram_inspired/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/pubg_telegram_inspired/logic
+          mkdir -p telegram_sandbox_bot/bot/modules/pubg_telegram_inspired/data
+          mkdir -p telegram_sandbox_bot/bot/modules/social_features/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/social_features/logic
+          mkdir -p telegram_sandbox_bot/bot/modules/genshin_inspired/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/genshin_inspired/logic
+          mkdir -p telegram_sandbox_bot/bot/modules/genshin_inspired/data
+          mkdir -p telegram_sandbox_bot/bot/modules/honkai_inspired/commands
+          mkdir -p telegram_sandbox_bot/bot/modules/honkai_inspired/logic
+          mkdir -p telegram_sandbox_bot/bot/modules/honkai_inspired/data
+          mkdir -p telegram_sandbox_bot/bot/data/databases
+          mkdir -p telegram_sandbox_bot/bot/config
+          mkdir -p telegram_sandbox_bot/bot/logs
 
-      - name: Run make.py
-        run: python make.py  # Run your script to create the directory structure
+          # Create placeholder files
+          touch telegram_sandbox_bot/bot/__init__.py
+          touch telegram_sandbox_bot/bot/core/__init__.py
+          touch telegram_sandbox_bot/bot/core/bot_instance.py
+          touch telegram_sandbox_bot/bot/core/config_loader.py
+          touch telegram_sandbox_bot/bot/core/error_handler.py
+          touch telegram_sandbox_bot/bot/core/logger.py
+          touch telegram_sandbox_bot/bot/core/utils/__init__.py
+          touch telegram_sandbox_bot/bot/core/utils/helpers.py
+          touch telegram_sandbox_bot/bot/modules/__init__.py
+          touch telegram_sandbox_bot/bot/modules/general_commands/__init__.py
+          touch telegram_sandbox_bot/bot/modules/general_commands/general_commands.py
+          touch telegram_sandbox_bot/bot/modules/minigames/__init__.py
+          touch telegram_sandbox_bot/bot/modules/minigames/minigames.py
+          touch telegram_sandbox_bot/bot/modules/rpg_elements/__init__.py
+          touch telegram_sandbox_bot/bot/modules/rpg_elements/rpg_elements.py
+          touch telegram_sandbox_bot/bot/modules/pubg_telegram_inspired/__init__.py
+          touch telegram_sandbox_bot/bot/modules/pubg_telegram_inspired/pubg_telegram.py
+          touch telegram_sandbox_bot/bot/modules/social_features/__init__.py
+          touch telegram_sandbox_bot/bot/modules/social_features/social_features.py
+          touch telegram_sandbox_bot/bot/modules/genshin_inspired/__init__.py
+          touch telegram_sandbox_bot/bot/modules/genshin_inspired/genshin_telegram.py
+          touch telegram_sandbox_bot/bot/modules/honkai_inspired/__init__.py
+          touch telegram_sandbox_bot/bot/modules/honkai_inspired/honkai_telegram.py
+          touch telegram_sandbox_bot/bot/data/__init__.py
+          touch telegram_sandbox_bot/bot/data/databases/__init__.py
+          touch telegram_sandbox_bot/bot/data/databases/database_manager.py
+          touch telegram_sandbox_bot/bot/data/databases/models.py
+          touch telegram_sandbox_bot/bot/config/__init__.py
+          touch telegram_sandbox_bot/bot/config/config.ini
+          touch telegram_sandbox_bot/bot/main.py
+          touch telegram_sandbox_bot/bot/requirements.txt
+          touch telegram_sandbox_bot/bot/README.md
 
-      
+      - name: Commit changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Create initial directory structure"
+          git push
