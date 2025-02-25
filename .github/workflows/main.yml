@@ -21,10 +21,4 @@ jobs:
       - name: Run make.py
         run: python make.py  # Run your script to create the directory structure
 
-      - name: Commit changes
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "github-actions@github.com"
-          git add .
-          git commit -m "Create directory structure" || echo "No changes to commit"
-          git push
+      
